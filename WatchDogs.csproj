@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>   
+    <AssemblyName>WatchDogs</AssemblyName>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ScriptHookVDotNet3">
+      <HintPath>G:\GTAVEnhanced\ScriptHookVDotNet3.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- מעתיק אוטומטית את ה-DLL לתיקיית scripts אחרי כל build -->
+  <Target Name="CopyToGta" AfterTargets="Build">
+    <Copy SourceFiles="$(OutputPath)WatchDogs.dll"
+          DestinationFolder="G:\GTAVEnhanced\scripts" />
+  </Target>
+</Project>
